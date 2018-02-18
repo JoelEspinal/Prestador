@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    tools:context="beanstage.com.lender.LoanActivityFragment"
+    tools:showIn="@layout/activity_loan">
+
+
+        <EditText
+            android:id="@+id/edit_term"
+            android:labelFor="@+id/edit_term"
+            android:layout_width="132dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            android:maxLength="3"
+            android:ems="10"
+            android:inputType="number"
+            app:layout_constraintStart_toStartOf="@+id/edit_rate"
+            app:layout_constraintTop_toBottomOf="@+id/edit_rate" />
+
+        <EditText
+            android:id="@+id/edit_rate"
+            android:layout_width="132dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="64dp"
+            android:maxLength="5"
+            android:ems="10"
+            android:inputType="numberDecimal"
+            android:labelFor="@+id/edit_rate"
+            app:layout_constraintStart_toStartOf="@+id/edit_amount"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/edit_amount"
+            android:layout_width="132dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="24dp"
+            android:maxLength="7"
+            android:ems="10"
+            android:inputType="numberSigned"
+            android:labelFor="@+id/edit_amount"
+            app:layout_constraintStart_toEndOf="@+id/text_amount"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/text_term"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/term"
+            app:layout_constraintStart_toStartOf="@+id/text_rate"
+            app:layout_constraintTop_toBottomOf="@+id/text_rate"
+            tools:text="@string/term" />
+
+        <TextView
+            android:id="@+id/text_rate"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/anual_rate"
+            app:layout_constraintStart_toStartOf="@+id/text_amount"
+            app:layout_constraintTop_toBottomOf="@+id/text_amount"
+            tools:text="@string/anual_rate" />
+
+        <TextView
+            android:id="@+id/text_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="21dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="36dp"
+            android:text="@string/amount"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/amount" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="8dp"
+            android:text="%"
+            app:layout_constraintStart_toEndOf="@+id/edit_rate"
+            app:layout_constraintTop_toBottomOf="@+id/edit_amount"
+            tools:text="%" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/month"
+            app:layout_constraintStart_toEndOf="@+id/edit_term"
+            app:layout_constraintTop_toTopOf="@+id/edit_term" />
+</android.support.constraint.ConstraintLayout>

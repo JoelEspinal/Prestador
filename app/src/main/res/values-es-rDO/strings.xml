@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Prestador</string>
+    <string name="action_settings">Ajustes</string>
+    <string name="month">(Meses)</string>
+    <string name="amount">Cantidad</string>
+    <string name="anual_rate">Interes</string>
+    <string name="calculate">Calcular</string>
+    <string name="term">Plazo</string>
+    <string name="generate">generar</string>
+    <string name="loan_info">Informacion del prestamo</string>
+    <string name="cancel">Cancelar</string>
+</resources>
