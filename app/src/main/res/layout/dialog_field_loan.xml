@@ -1,102 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/diaglog"
     android:orientation="vertical"
     android:gravity="center_horizontal"
-    tools:context="beanstage.com.lender.LoanActivityFragment"
-    tools:showIn="@layout/activity_loan">
+    tools:context="beanstage.com.lender.LoanActivityFragment">
 
+        <TextView
+            android:id="@+id/text_amount"
+            android:layout_width="65dp"
+            android:layout_height="40dp"
+            android:text="@string/amount"
+            tools:text="@string/amount" />
+
+        <TextView
+            android:id="@+id/text_rate_tip"
+            android:layout_width="65dp"
+            android:layout_height="40dp"
+            android:layout_toRightOf="@+id/edit_rate"
+            android:layout_below="@+id/edit_amount"
+            android:text="@string/rate_sign"
+            tools:text="@string/rate_sign" android:layout_toEndOf="@+id/edit_rate" />
+
+        <TextView
+            android:id="@+id/text_rate"
+            android:layout_width="65dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/text_amount"
+            android:text="@string/anual_rate"
+            tools:text="@string/anual_rate" />
+
+        <TextView
+            android:id="@+id/text_month_tip"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_toRightOf="@id/edit_amount"
+            android:layout_below="@+id/edit_rate"
+            android:text="@string/month" android:layout_toEndOf="@id/edit_amount" />
+
+        <EditText
+            android:id="@+id/edit_amount"
+            android:layout_width="132dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/text_amount"
+            android:maxLength="7"
+            android:ems="10"
+            android:inputType="numberSigned"
+            android:labelFor="@+id/edit_amount" android:layout_toEndOf="@+id/text_amount" />
+
+        <EditText
+            android:id="@+id/edit_rate"
+            android:layout_width="132dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/edit_amount"
+            android:layout_toRightOf="@id/text_rate"
+            android:maxLength="5"
+            android:ems="10"
+            android:inputType="numberDecimal"
+            android:labelFor="@+id/edit_rate"
+            android:layout_toEndOf="@id/text_rate" />
 
         <EditText
             android:id="@+id/edit_term"
             android:labelFor="@+id/edit_term"
             android:layout_width="132dp"
             android:layout_height="40dp"
-            android:layout_marginTop="8dp"
+            android:layout_toRightOf="@id/text_term"
+            android:layout_below="@id/edit_rate"
             android:maxLength="3"
             android:ems="10"
-            android:inputType="number"
-            app:layout_constraintStart_toStartOf="@+id/edit_rate"
-            app:layout_constraintTop_toBottomOf="@+id/edit_rate" />
-
-        <EditText
-            android:id="@+id/edit_rate"
-            android:layout_width="132dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="64dp"
-            android:maxLength="5"
-            android:ems="10"
-            android:inputType="numberDecimal"
-            android:labelFor="@+id/edit_rate"
-            app:layout_constraintStart_toStartOf="@+id/edit_amount"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
-            android:id="@+id/edit_amount"
-            android:layout_width="132dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="24dp"
-            android:maxLength="7"
-            android:ems="10"
-            android:inputType="numberSigned"
-            android:labelFor="@+id/edit_amount"
-            app:layout_constraintStart_toEndOf="@+id/text_amount"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:inputType="number" android:layout_toEndOf="@id/text_term" />
 
         <TextView
             android:id="@+id/text_term"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="20dp"
+            android:layout_width="65dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/text_rate"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             android:text="@string/term"
-            app:layout_constraintStart_toStartOf="@+id/text_rate"
-            app:layout_constraintTop_toBottomOf="@+id/text_rate"
-            tools:text="@string/term" />
-
-        <TextView
-            android:id="@+id/text_rate"
-            android:layout_width="wrap_content"
-            android:layout_height="20dp"
-            android:layout_marginTop="20dp"
-            android:text="@string/anual_rate"
-            app:layout_constraintStart_toStartOf="@+id/text_amount"
-            app:layout_constraintTop_toBottomOf="@+id/text_amount"
-            tools:text="@string/anual_rate" />
-
-        <TextView
-            android:id="@+id/text_amount"
-            android:layout_width="wrap_content"
-            android:layout_height="21dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="36dp"
-            android:text="@string/amount"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="@string/amount" />
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="8dp"
-            android:text="%"
-            app:layout_constraintStart_toEndOf="@+id/edit_rate"
-            app:layout_constraintTop_toBottomOf="@+id/edit_amount"
-            tools:text="%" />
-
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/month"
-            app:layout_constraintStart_toEndOf="@+id/edit_term"
-            app:layout_constraintTop_toTopOf="@+id/edit_term" />
-</android.support.constraint.ConstraintLayout>
+            tools:text="@string/term" android:paddingStart="10dp" />
+</RelativeLayout>
