@@ -14,6 +14,7 @@ import android.widget.Toast;
 public class LoanActivityFragment extends Fragment implements View.OnClickListener, LoanDialog.InfoDialogListener {
 
     public LoanActivityFragment() {
+
     }
 
     @Override
