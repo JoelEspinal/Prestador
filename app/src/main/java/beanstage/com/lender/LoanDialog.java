@@ -15,6 +15,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
+import beanstage.com.lender.models.Loan;
+
 /**
  * Created by User on 2/18/2018.
  */
@@ -74,14 +76,13 @@ public class LoanDialog extends DialogFragment {
         String termText = mTermEditText.getText().toString();
 
         if(!(amountText.isEmpty() || rateText.isEmpty() || termText.isEmpty())){
-            int amountValue = Integer.valueOf(amountText);
+            double amountValue = Double.valueOf(amountText);
             double anualRateValue = Double.valueOf(rateText);
             int termValue = Integer.valueOf(mTermEditText.getText().toString());
 
-            bundle.putInt("amount", amountValue);
-            bundle.putDouble("anual_rate", anualRateValue);
-            bundle.putInt("term", termValue);
-
+            bundle.putDouble(Loan.AMOUNT, amountValue);
+            bundle.putDouble(Loan.MONTHLY_RATE, anualRateValue);
+            bundle.putInt(Loan.TERM, termValue);
         }
 
         infoDialogListener.onFinishEditInfo(bundle);
