@@ -10,4 +10,6 @@
     <string name="generate">generar</string>
     <string name="loan_info">Informacion del prestamo</string>
     <string name="cancel">Cancelar</string>
+    <string name="monthly">Monthly</string>
+    <string name="anual">Anual</string>
 </resources>
