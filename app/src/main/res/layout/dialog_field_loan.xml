@@ -10,90 +10,85 @@
     tools:context="beanstage.com.lender.LoanActivityFragment">
 
         <TextView
-            android:id="@+id/text_amount"
+            android:id="@+id/amountTextView"
             android:layout_width="65dp"
             android:layout_height="40dp"
             android:text="@string/amount"
             tools:text="@string/amount" />
 
         <TextView
-            android:id="@+id/text_rate_tip"
+            android:id="@+id/rateTipTextView"
             android:layout_width="30dp"
             android:layout_height="40dp"
-            android:layout_toRightOf="@+id/edit_rate"
-            android:layout_below="@+id/edit_amount"
+            android:layout_toRightOf="@+id/rateEditText"
+            android:layout_below="@+id/amountEditText"
             android:text="@string/rate_sign"
-            tools:text="@string/rate_sign" android:layout_toEndOf="@+id/edit_rate" />
+            tools:text="@string/rate_sign" android:layout_toEndOf="@+id/rateEditText" />
+
+        <ToggleButton
+            android:id="@+id/isAnualToggleButton"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:textSize="10sp"
+            android:layout_below="@+id/amountEditText"
+            android:textOff="@string/monthly"
+            android:textOn="@string/anual"
+            android:layout_toRightOf="@+id/rateTipTextView" />
 
         <TextView
-            android:id="@+id/text_is_anual"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="anual?"
-            android:layout_below="@+id/edit_amount"
-            android:layout_toRightOf="@+id/text_rate_tip" />
-
-        <CheckBox
-            android:id="@+id/chk_anual"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/edit_amount"
-            android:layout_toRightOf="@+id/text_is_anual" />
-
-        <TextView
-            android:id="@+id/text_rate"
+            android:id="@+id/rateTextView"
             android:layout_width="65dp"
             android:layout_height="40dp"
-            android:layout_below="@id/text_amount"
+            android:layout_below="@id/amountTextView"
             android:text="@string/anual_rate"
             tools:text="@string/anual_rate" />
 
         <TextView
-            android:id="@+id/text_month_tip"
+            android:id="@+id/monthTipTextView"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:layout_toRightOf="@id/edit_amount"
-            android:layout_below="@+id/edit_rate"
-            android:text="@string/month" android:layout_toEndOf="@id/edit_amount" />
+            android:layout_toRightOf="@id/amountEditText"
+            android:layout_below="@+id/rateEditText"
+            android:text="@string/month" android:layout_toEndOf="@id/amountEditText" />
 
         <EditText
-            android:id="@+id/edit_amount"
+            android:id="@+id/amountEditText"
             android:layout_width="132dp"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/text_amount"
+            android:layout_toRightOf="@+id/amountTextView"
             android:maxLength="7"
             android:ems="10"
             android:inputType="numberSigned"
-            android:labelFor="@+id/edit_amount" android:layout_toEndOf="@+id/text_amount" />
+            android:labelFor="@+id/amountEditText" android:layout_toEndOf="@+id/amountTextView" />
 
         <EditText
-            android:id="@+id/edit_rate"
+            android:id="@+id/rateEditText"
             android:layout_width="132dp"
             android:layout_height="40dp"
-            android:layout_below="@id/edit_amount"
-            android:layout_toRightOf="@id/text_rate"
+            android:layout_below="@id/amountEditText"
+            android:layout_toRightOf="@id/rateTextView"
             android:maxLength="5"
             android:ems="10"
             android:inputType="numberDecimal"
-            android:labelFor="@+id/edit_rate"
-            android:layout_toEndOf="@id/text_rate" />
+            android:labelFor="@+id/rateEditText"
+            android:layout_toEndOf="@id/rateTextView" />
 
         <EditText
-            android:id="@+id/edit_term"
-            android:labelFor="@+id/edit_term"
+            android:id="@+id/termEditText"
+            android:labelFor="@+id/termEditText"
             android:layout_width="132dp"
             android:layout_height="40dp"
-            android:layout_toRightOf="@id/text_term"
-            android:layout_below="@id/edit_rate"
+            android:layout_toRightOf="@id/termTextView"
+            android:layout_below="@id/rateEditText"
             android:maxLength="3"
             android:ems="10"
-            android:inputType="number" android:layout_toEndOf="@id/text_term" />
+            android:inputType="number" android:layout_toEndOf="@id/termTextView" />
 
         <TextView
-            android:id="@+id/text_term"
+            android:id="@+id/termTextView"
             android:layout_width="65dp"
             android:layout_height="40dp"
-            android:layout_below="@id/text_rate"
+            android:layout_below="@id/rateTextView"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:text="@string/term"
