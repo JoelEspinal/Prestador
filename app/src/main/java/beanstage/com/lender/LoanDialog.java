@@ -6,14 +6,13 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.BundleCompat;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ToggleButton;
 
 import beanstage.com.lender.models.Loan;
 
@@ -26,6 +25,7 @@ public class LoanDialog extends DialogFragment {
     private EditText mAmountEditText;
     private EditText mRateEditText;
     private EditText mTermEditText;
+    private ToggleButton mIsAnualCheck;
 
     @Nullable
     @Override
@@ -42,10 +42,10 @@ public class LoanDialog extends DialogFragment {
 
         View view = inflater.inflate(R.layout.dialog_field_loan, null);
 
-        mAmountEditText = (EditText) view.findViewById(R.id.edit_amount);
-        mRateEditText = (EditText) view.findViewById(R.id.edit_rate);
-        mTermEditText = (EditText) view.findViewById(R.id.edit_term);
-
+        mAmountEditText = (EditText) view.findViewById(R.id.amountEditText);
+        mRateEditText = (EditText) view.findViewById(R.id.rateEditText);
+        mTermEditText = (EditText) view.findViewById(R.id.termEditText);
+        mIsAnualCheck = (ToggleButton) view.findViewById(R.id.isAnualToggleButton);
         Resources res = getResources();
 
 
@@ -57,13 +57,13 @@ public class LoanDialog extends DialogFragment {
                 LoanDialog.this.sendBackResult();
             }
         });
+
         builder.setNegativeButton(res.getText(R.string.cancel), null);
         return builder.create();
-
     }
 
     public interface InfoDialogListener {
-        void onFinishEditInfo(Bundle info);
+        void onFinishEditInfo(Bundle loanBundleInfo);
     }
 
     public void sendBackResult() {
@@ -74,19 +74,20 @@ public class LoanDialog extends DialogFragment {
         String amountText = mAmountEditText.getText().toString();
         String rateText = mRateEditText.getText().toString();
         String termText = mTermEditText.getText().toString();
+        boolean isRateAnual = mIsAnualCheck.isChecked();
 
         if(!(amountText.isEmpty() || rateText.isEmpty() || termText.isEmpty())){
             double amountValue = Double.valueOf(amountText);
             double anualRateValue = Double.valueOf(rateText);
-            int termValue = Integer.valueOf(mTermEditText.getText().toString());
+            int n = Integer.valueOf(termText);
 
             bundle.putDouble(Loan.AMOUNT, amountValue);
-            bundle.putDouble(Loan.MONTHLY_RATE, anualRateValue);
-            bundle.putInt(Loan.TERM, termValue);
+            bundle.putDouble(Loan.RATE, anualRateValue);
+            bundle.putInt(Loan.TERM, n);
+            bundle.putBoolean(Loan.IS_ANUAL, isRateAnual);
         }
 
         infoDialogListener.onFinishEditInfo(bundle);
         dismiss();
-
     }
 }
