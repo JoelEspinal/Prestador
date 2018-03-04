@@ -7,11 +7,12 @@
     <string name="amount">Amount*</string>
     <string name="anual_rate">Rate*</string>
     <string name="term">Term*</string>
-
     <string name="calculate">Calculate</string>
     <string name="generate">generate</string>
     <string name="loan_info">Loan Info</string>
     <string name="cancel">Cancel</string>
     <string name="rate_sign">%</string>
+    <string name="monthly">Monthly</string>
+    <string name="anual">Anual</string>
 
 </resources>
