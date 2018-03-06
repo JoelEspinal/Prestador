@@ -24,6 +24,10 @@ public class FeeAdapter extends RecyclerView.Adapter<FeeAdapter.ViewHolder> {
         mFeeList = feeList;
     }
 
+    public void setmFeeList(List<Fee> mFeeList) {
+        this.mFeeList = mFeeList;
+    }
+
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         public TextView mFeeTextView;
@@ -40,7 +44,6 @@ public class FeeAdapter extends RecyclerView.Adapter<FeeAdapter.ViewHolder> {
         }
     }
 
-
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -51,7 +54,6 @@ public class FeeAdapter extends RecyclerView.Adapter<FeeAdapter.ViewHolder> {
         ViewHolder vh = new ViewHolder(feeView);
         return vh;
     }
-
 
     // Replace the contents of a view (invoked by the layout manager)
     @Override
