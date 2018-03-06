@@ -5,9 +5,11 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +24,7 @@ import beanstage.com.lender.models.Loan;
 public class LoanActivityFragment extends Fragment implements View.OnClickListener, LoanDialog.InfoDialogListener {
 
     private RecyclerView mRecyclerView;
-    private RecyclerView.Adapter mFeeAdapter;
+    private FeeAdapter mFeeAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private   List<Fee> mFeeList;
 
@@ -34,24 +36,21 @@ public class LoanActivityFragment extends Fragment implements View.OnClickListen
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-
         View view = getActivity().getLayoutInflater().inflate(R.layout.fragment_loan, container, false);
-
-
 
         view.findViewById(R.id.calculate).setOnClickListener(this);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.feeRcicleView);
 
-
-
         // use a linear layout manager
         mLayoutManager = new LinearLayoutManager(getActivity());
+
+
         mRecyclerView.setLayoutManager(mLayoutManager);
 
         mFeeList = new ArrayList<Fee>();
+
         mFeeAdapter = new FeeAdapter(mFeeList);
         mRecyclerView.setAdapter(mFeeAdapter);
-
         return view;
     }
 
@@ -82,9 +81,23 @@ public class LoanActivityFragment extends Fragment implements View.OnClickListen
         int n =  loanBundleInfo.getInt(Loan.TERM, 0);
         boolean isAnual =  loanBundleInfo.getBoolean(Loan.IS_ANUAL, false);
 
+
+        mFeeList.clear();
+        mRecyclerView.removeAllViews();
+       // mFeeAdapter.notifyDataSetChanged();
+        mRecyclerView.setAdapter(mFeeAdapter);
+
         Loan loan = new Loan(amount, rate, n, isAnual);
+        mFeeList = loan.calculateFee();
 
-        mFeeList.addAll(loan.calculateFee());
+      //  mFeeAdapter.notifyItemRangeChanged(0, mFeeList.size());
+      //  Toast.makeText(getActivity(), mFeeList.get(0).fee + "", Toast.LENGTH_SHORT).show();
 
+        mFeeAdapter.setmFeeList(mFeeList);
+        mRecyclerView.setAdapter(mFeeAdapter);
+
+
+        //   mFeeAdapter.notifyDataSetChanged();
+        Log.d("COUNT", mFeeAdapter.getItemCount() + "");
     }
 }
