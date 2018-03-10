@@ -47,6 +47,7 @@ public class LoanActivityFragment extends Fragment implements View.OnClickListen
         View view = getActivity().getLayoutInflater().inflate(R.layout.fragment_loan, container, false);
 
         view.findViewById(R.id.calculate).setOnClickListener(this);
+        view.findViewById(R.id.clear).setOnClickListener(this);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.feeRcicleView);
 
         // use a linear layout manager
@@ -69,7 +70,14 @@ public class LoanActivityFragment extends Fragment implements View.OnClickListen
                 showLoanDialog();
                 break;
             }
+            case R.id.clear: {
+                amount = 0;
+                n = 0;
+                rate = 0;
 
+                refreshLoanList();
+                break;
+            }
             default:
                 break;
         }
