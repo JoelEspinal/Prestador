@@ -49,5 +49,13 @@ public class Fee {
         return (currentFee - interest);
     }
 
-
+    /**
+     *
+     * @param previewBalance
+     * @param amortization
+     * @return current Balance
+     */
+    public static double calculateBalance(double previewBalance, double amortization) {
+        return (previewBalance - amortization);
+    }
 }
