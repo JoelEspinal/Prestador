@@ -12,7 +12,6 @@ public class Fee {
     public double interest;
     public double balance;
 
-
     /**
      *
      * @param amount
@@ -31,12 +30,12 @@ public class Fee {
 
     /**
      *
-     * @param previousAmount
+     * @param previousBalance
      * @param i monthly interest
      * @return the interest corresponding to current Fee
      */
-    public static double calculateFeeInterest(double previousAmount, double i){
-        return (previousAmount * i);
+    public static double calculateFeeInterest(double previousBalance, double i){
+        return (previousBalance * i);
     }
 
     /**
