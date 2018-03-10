@@ -29,21 +29,27 @@ public class Loan {
     public List<Fee> calculateFee(){
         List<Fee> feeList = new ArrayList<Fee>();
 
-        double fee = 0.0;
-
        if(mIsAnual){
            i = (double) i/12;
        }
 
-//      Calculate fees, french mode
-//      R = P [(i (1 + i)^n) / ((1 + i)^n – 1)]
-       fee = this.mAmount * ((i * Math.pow((1+ i), n))/(Math.pow((1 + i),  n) -  1));
-       fee = (double) Math.round(fee * 100) / 100;
+       i = i / 100;
+
+        double balance = this.mAmount;
+
+        Fee feeObj = new Fee();
+        feeObj.n = 0;
+        feeObj.fee = 0;
+        feeObj.amortization = 0;
+        feeObj.balance = balance;
+
+        feeList.add(feeObj);
+
         for(int it = 0; it < n; it++){
-            Fee feeObj = new Fee();
-            feeObj.fee = fee;
-
-
+            feeObj = new Fee();
+            feeObj.fee = Fee.calculateFee(mAmount, i, n);
+            feeObj.interest = (balance * i);
+            feeObj.n = (n + 1);
             feeList.add(feeObj);
         }
 
