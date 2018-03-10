@@ -9,18 +9,27 @@
     tools:context="beanstage.com.lender.LoanActivityFragment"
     tools:showIn="@layout/activity_loan">
 
-    <Button
-        android:id="@+id/calculate"
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/Widget.AppCompat.Button.Borderless.Colored"
-        android:text="Calculate"/>
-    <Button
-        android:id="@+id/clear"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:text="Clean"/>
+        android:weightSum="2">
+        <Button
+            android:id="@+id/clear"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:text="Clean"/>
+        <Button
+            android:id="@+id/calculate"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            style="@style/Widget.AppCompat.Button.Borderless.Colored"
+            android:text="Calculate"/>
+    </LinearLayout>
+
 
     <ScrollView
         android:layout_width="match_parent"
