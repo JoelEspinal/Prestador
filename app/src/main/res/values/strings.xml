@@ -14,5 +14,10 @@
     <string name="rate_sign">%</string>
     <string name="monthly">Monthly</string>
     <string name="anual">Anual</string>
+    <string name="n">N</string>
+    <string name="cuote">Cuote</string>
+    <string name="interest">interest</string>
+    <string name="amortization">Amortization</string>
+    <string name="balance">Balance</string>
 
 </resources>

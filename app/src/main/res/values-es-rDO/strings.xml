@@ -12,4 +12,8 @@
     <string name="cancel">Cancelar</string>
     <string name="monthly">Monthly</string>
     <string name="anual">Anual</string>
+    <string name="cuote">Cuote</string>
+    <string name="interest">interest</string>
+    <string name="amortization">Amortization</string>
+    <string name="balance">Balance</string>
 </resources>
