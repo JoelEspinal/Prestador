@@ -35,22 +35,29 @@ public class Loan {
 
        i = i / 100;
 
-        double balance = this.mAmount;
+        double balance =  Math.round(this.mAmount * 100) / 100;
 
         Fee feeObj = new Fee();
         feeObj.n = 0;
         feeObj.fee = 0;
         feeObj.amortization = 0;
-        feeObj.balance = balance;
+        feeObj.balance = Math.round(balance * 100) / 100;
 
         feeList.add(feeObj);
 
         for(int it = 0; it < n; it++){
             feeObj = new Fee();
             feeObj.fee = Fee.calculateFee(mAmount, i, n);
-            feeObj.interest = (balance * i);
-            feeObj.n = (n + 1);
+
+            feeObj.interest = (double) Math.round(Fee.calculateFeeInterest(balance, i) * 100)/ 100;
+            feeObj.amortization = (double) Math.round(Fee.calculateAmortization(feeObj.fee, feeObj.interest) * 100)/ 100;
+            feeObj.balance = (double) Math.round(Fee.calculateBalance(balance, feeObj.amortization) * 100)/ 100;
+            feeObj.n = (it + 1);
+
             feeList.add(feeObj);
+
+            // update previus balance to current balance
+            balance = feeObj.balance;
         }
 
         return feeList;

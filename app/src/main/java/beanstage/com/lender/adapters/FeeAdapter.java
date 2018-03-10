@@ -34,6 +34,7 @@ public class FeeAdapter extends RecyclerView.Adapter<FeeAdapter.ViewHolder> {
         public TextView mAortizationTextView;
         public TextView mInteresTextView;
         public TextView mBalanceTextView;
+        public TextView nTextView;
 
         public ViewHolder(View feeView) {
             super(feeView);
@@ -41,6 +42,7 @@ public class FeeAdapter extends RecyclerView.Adapter<FeeAdapter.ViewHolder> {
             mAortizationTextView = (TextView) feeView.findViewById(R.id.amortizationTextView);
             mInteresTextView = (TextView) feeView.findViewById(R.id.interesTextView);
             mBalanceTextView = (TextView) feeView.findViewById(R.id.balanceTextView);
+            nTextView = (TextView) feeView.findViewById(R.id.n);
         }
     }
 
@@ -62,6 +64,7 @@ public class FeeAdapter extends RecyclerView.Adapter<FeeAdapter.ViewHolder> {
         // - replace the contents of the view with that element
         Fee fee = mFeeList.get(position);
 
+        holder.nTextView.setText(String.valueOf(fee.n));
         holder.mFeeTextView.setText(String.valueOf(fee.fee));
         holder.mAortizationTextView.setText(String.valueOf(fee.amortization));
         holder.mInteresTextView.setText(String.valueOf(fee.interest));
