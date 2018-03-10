@@ -1,5 +1,7 @@
 package beanstage.com.lender;
 
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
@@ -23,10 +25,16 @@ import beanstage.com.lender.models.Loan;
  */
 public class LoanActivityFragment extends Fragment implements View.OnClickListener, LoanDialog.InfoDialogListener {
 
-    private RecyclerView mRecyclerView;
-    private FeeAdapter mFeeAdapter;
-    private RecyclerView.LayoutManager mLayoutManager;
-    private   List<Fee> mFeeList;
+    RecyclerView mRecyclerView;
+    FeeAdapter mFeeAdapter;
+    RecyclerView.LayoutManager mLayoutManager;
+    List<Fee> mFeeList;
+    Loan loan;
+
+    double amount;
+    double rate;
+    int n;
+    boolean isAnual;
 
     public LoanActivityFragment() {
 
@@ -76,28 +84,49 @@ public class LoanActivityFragment extends Fragment implements View.OnClickListen
 
     @Override
     public void onFinishEditInfo(Bundle loanBundleInfo) {
-        double amount = loanBundleInfo.getDouble(Loan.AMOUNT, 0);
-        double rate =  loanBundleInfo.getDouble(Loan.RATE, 0);
-        int n =  loanBundleInfo.getInt(Loan.TERM, 0);
-        boolean isAnual =  loanBundleInfo.getBoolean(Loan.IS_ANUAL, false);
+        amount = loanBundleInfo.getDouble(Loan.AMOUNT, 0);
+        rate =  loanBundleInfo.getDouble(Loan.RATE, 0);
+        n =  loanBundleInfo.getInt(Loan.TERM, 0);
+        isAnual =  loanBundleInfo.getBoolean(Loan.IS_ANUAL, false);
 
+        refreshLoanList();
+    }
 
+    private void refreshLoanList(){
         mFeeList.clear();
         mRecyclerView.removeAllViews();
-       // mFeeAdapter.notifyDataSetChanged();
+        // mFeeAdapter.notifyDataSetChanged();
         mRecyclerView.setAdapter(mFeeAdapter);
 
-        Loan loan = new Loan(amount, rate, n, isAnual);
+        loan = new Loan(amount, rate, n, isAnual);
         mFeeList = loan.calculateFee();
-
-      //  mFeeAdapter.notifyItemRangeChanged(0, mFeeList.size());
-      //  Toast.makeText(getActivity(), mFeeList.get(0).fee + "", Toast.LENGTH_SHORT).show();
 
         mFeeAdapter.setmFeeList(mFeeList);
         mRecyclerView.setAdapter(mFeeAdapter);
+    }
 
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
 
-        //   mFeeAdapter.notifyDataSetChanged();
-        Log.d("COUNT", mFeeAdapter.getItemCount() + "");
+        outState.putDouble(Loan.AMOUNT, amount);
+        outState.putDouble(Loan.RATE, rate);
+        outState.putInt(Loan.TERM, n);
+        outState.putBoolean(Loan.IS_ANUAL, isAnual);
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        if(savedInstanceState != null){
+
+            amount = savedInstanceState.getDouble(Loan.AMOUNT, 0);
+            rate =  savedInstanceState.getDouble(Loan.RATE, 0);
+            n =  savedInstanceState.getInt(Loan.TERM, 0);
+
+            refreshLoanList();
+        }
+
     }
 }
